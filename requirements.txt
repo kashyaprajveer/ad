@@ -1,7 +1,6 @@
 Flask==1.1.4
 MarkupSafe==2.0.1
 jsonify==0.5
-keras==2.6.0
 numpy
 pandas==1.2.4
 requests==2.25.1
