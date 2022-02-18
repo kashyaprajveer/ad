@@ -1,1 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+    <meta charset="UTF_8">
+    <meta name="viewport" content="width=device_width, initial_scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div style="color:blue">
+        <form action="{{ url_for('predict')}}" method="post">
+            <h2>Predictive analysis</h2>
+            
+            <h3>Users age</h3>
+            <input id="age" name="age" type="number">
+            
+            <h3>What Is the Workclass?</h3><br><select name="workclass" id="workclass" required="required">
+                <option value="State_gov">State_gov</option>
+                <option value="Self_emp_not_inc">Self_emp_not_inc</option>
+                <option value="Private">Private</option>
+                <option value="Federal_gov">Federal_gov</option>
+                <option value="Local_gov">Local_gov</option>
+                <option value="Self_emp_inc">Self_emp_inc</option>
+                <option value="Without_pay">Without_pay</option>
+            </select>
+            
+            <h3>education</h3><br><select name="education" id="education" required="required">
+                <option value="Undergraduate">Undergraduate</option>
+                <option value="HS_grad">HS_grad</option>
+                <option value="Middle">Middle</option>
+                <option value="Graduate">Graduate</option>
+                <option value="Elementary">Elementary</option>
+            </select>
+            
+            
+            <h3>marital_status</h3><br><select name="marital_status" id="marital_status" required="required">
+                <option value="Never_married">Never_married</option>
+                <option value="Married_civ_spouse">Married_civ_spouse</option>
+                <option value="Divorced">Divorced</option>
+                <option value="Married_spouse_absent">Married_spouse_absent</option>
+                <option value="Separated">Separated</option>
+                <option value="Married_AF_spouse">Married_AF_spouse</option>
+                <option value="Widowed">Widowed</option>
+            </select>
+            
+            <h3>Occupation</h3><br><select name="occupation" id="occupation" required="required">
+                <option value="Adm_clerical">Adm_clerical</option>
+                <option value="Exec_managerial">Exec_managerial</option>
+                <option value="Handlers_cleaners">Handlers_cleaners</option>
+                <option value="Prof_specialty">Prof_specialty</option>
+                <option value="Other_service">Other_service</option>
+                <option value="Sales">Sales</option>
+                <option value="Transport_moving">Transport_moving</option>
+                <option value="Farming_fishing">Farming_fishing</option>
+                <option value="Machine_op_inspct">Machine_op_inspct</option>
+                <option value="Tech_support">Tech_support</option>
+                <option value="Craft_repair">Craft_repair</option>
+                <option value="Protective_serv">Protective_serv</option>
+                <option value="Armed_Forces">Armed_Forces</option>
+                <option value="Priv_house_serv">Priv_house_serv</option>
+            </select>
+            
+
+            
+            <h3>Gender</h3><br><select name="gender" id="gender" required="required">
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+            </select>
+            
+            
+            <h3>hours_per_week</h3>
+            <input id="second" name="hours_per_week" type="number">
+            
+            <h3>native_country</h3><br><select name="native_country" id="native_country" required="required">
+                <option value="United_States">United_States</option>
+                <option value="Cuba">Cuba</option>
+                <option value="Jamaica">Jamaica</option>
+                <option value="India">India</option>
+                <option value="Mexico">Mexico</option>
+                <option value="Puerto_Rico">Puerto_Rico</option>
+                <option value="Honduras">Honduras</option>
+                <option value="England">England</option>
+                <option value="Canada">Canada</option>
+                <option value="Germany">Germany</option>
+                <option value="Iran">Iran</option>
+                <option value="Philippines">Philippines</option>
+                <option value="Poland">Poland</option>
+                <option value="Columbia">Columbia</option>
+                <option value="Cambodia">Cambodia</option>
+                <option value="Thailand">Thailand</option>
+                <option value="Ecuador">Ecuador</option>
+                <option value="Laos">Laos</option>
+                <option value="Taiwan">Taiwan</option>
+                <option value="Haiti">Haiti</option>
+                <option value="Portugal">Portugal</option>
+                <option value="Dominican_Republic">Dominican_Republic</option>
+                <option value="El_Salvador">El_Salvador</option>
+                <option value="El_Salvador">El_Salvador</option>
+                <option value="c">c</option>
+                <option value="Guatemala">Guatemala</option>
+                <option value="Italy">Italy</option>
+                <option value="China">China</option>
+                <option value="Japan">Japan</option>
+                <option value="Yugoslavia">Yugoslavia</option>
+                <option value="Peru">Peru</option>
+                <option value="Outlying_US">Outlying_US</option>
+                <option value="Scotland">Scotland</option>
+                <option value="Trinadad_Tobago">Trinadad_Tobago</option>
+                <option value="Greece">Greece</option>
+                <option value="Nicaragua">Nicaragua</option>
+                <option value="Vietnam">Vietnam</option>
+                <option value="Hong">Hong</option>
+                <option value="Ireland">Ireland</option>
+                <option value="Hungary">Hungary</option>
+                <option value="Holand_Netherlands">Holand_Netherlands</option>
+            </select>
+            
+            <h3>Income</h3><br><select name="income" id="income" required="required">
+                <option value="incomeless50K">income less than equal to 50K</option>
+                <option value="incomemore50K">income greater than 50K</option>
+            </select>
+        
+            
+            <br><br><button id="sub" type="submit ">Predict</button>
+            <br>
+
+
+
+
+        </form>
+
+
+
+        <br><br><h3>{{ prediction_text }}<h3>
+    </div>
+
+
+
+
+    <style>
+        body {
+            background-color: lightslategray;
+            text-align: center;
+            padding: 0px;
+        }
+        
+        #research {
+            font_size: 18px;
+            width: 100px;
+            height: 23px;
+            top: 23px;
+        }
+        
+        #box {
+            border_radius: 60px;
+            border_color: 45px;
+            border_style: solid;
+            font_family: cursive;
+            text_align: center;
+            background_color: rgb(168, 131, 61);
+            font_size: medium;
+            position: absolute;
+            width: 700px;
+            bottom: 9%;
+            height: 850px;
+            right: 30%;
+            padding: 0px;
+            margin: 0px;
+            font_size: 14px;
+        }
+        
+        #age {
+            width: 83px;
+            height: 43px;
+            text_align: center;
+            border_radius: 14px;
+            font_size: 20px;
+        }
+        
+        
+        
+        #education {
+            width: 99px;
+            height: 43px;
+            text_align: center;
+            border_radius: 14px;
+            font_size: 18px;
+        }
+        
+        #education:hover {
+            background_color: coral;
+        }
+        
+        
+        
+        #marital_status {
+            border_radius: 14px;
+            width: 99px;
+            height: 25px;
+            font_size: 20px;
+            text_align: center;
+        }
+        
+        #gender {
+            border_radius: 14px;
+            height: 25px;
+            font_size: 20px;
+            text_align: center;
+        }
+        
+        #native_country {
+            border_radius: 14px;
+            height: 25px;
+            font_size: 20px;
+            text_align: center;
+        }
+        
+        #income {
+            border_radius: 14px;
+            height: 25px;
+            font_size: 20px;
+            text_align: center;
+        }
+    </style>
+</body>
+
+</html>
