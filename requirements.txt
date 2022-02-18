@@ -1,5 +1,4 @@
 Flask==1.1.4
-itdangerous
 jsonify==0.5
 keras==2.6.0
 numpy==1.22.2
